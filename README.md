@@ -1,4 +1,4 @@
-# HRMS - Human Resource Management System, Battalion
+# HRMS - Human Resource Management System, Battalion (INDIAN ARMY)
 
 The 'Battalion', is a customised software meant to actuate instant digital storage & retreival of data
 for the Sikh 17 Regiment, Tigers' battalion. Meant to deploy & run on LAN, the software segments
