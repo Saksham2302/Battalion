@@ -1,0 +1,56 @@
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------Printing using book class -start
+     
+    class Page1 implements Printable  
+    {    
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                
+                // Check If No Printable Content
+                if (pageIndex >= 2) return Printable.NO_SUCH_PAGE;
+                Graphics2D graphics2D = (Graphics2D)graphics;
+
+                graphics2D.setClip(0, 0, 690, 700); //shapes the printing rectangle in respect to translate
+                graphics2D.translate(10, 0); //marks the top of the page
+                
+                graphics2D.scale(0.68,0.7);
+                panelC.paint(graphics2D);
+                
+                // return if page exists
+                return Printable.PAGE_EXISTS;
+            }
+    }    
+    class Page2 implements Printable  
+    {    
+            public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                Graphics2D graphics2D = (Graphics2D)graphics;
+
+                graphics2D.setClip(0, 25, 690, 700); //shapes the printing rectangle in respect to translate
+                graphics2D.translate(10, -675); //marks the top of the page
+                
+                graphics2D.scale(0.68,0.7);
+                panelC.paint(graphics2D);
+                
+                // return if page exists
+                return Printable.PAGE_EXISTS;
+            }
+    }
+
+    private void PrintRecord()  
+    {         
+    PrinterJob printerjob = PrinterJob.getPrinterJob();          
+    PageFormat pageformat = printerjob.defaultPage();     
+    Book bk = new Book();    
+    
+    bk.append(new Page1(), pageformat);
+    bk.append(new Page2(), pageformat);
+    
+    // Pass the book to the PrinterJob      
+    printerjob.setPageable(bk);         
+    if (printerjob.printDialog())  
+    {
+      try { printerjob.print(); }  
+      catch (Exception e) { JOptionPane.showMessageDialog(null, "Could not print"); }      
+    }}
+
+    //--------------------------------------------------------------------------Printing using book class -end
+    //--------------------------------------------------------------------------
